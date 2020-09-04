@@ -1,9 +1,11 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import { FRONTEND_CONFIG } from '../Config';
 
 export const proxyMiddleware = createProxyMiddleware({
-  target: 'http://backend:8080',
+  target: `http://${FRONTEND_CONFIG.host}:${FRONTEND_CONFIG.port}`,
   changeOrigin: false,
-  ws: false,
+  ws: true,
+  // NOTE: body-parserにバラされたrequestを再び組み立てる
   // 参考URL: https://github.com/chimurai/http-proxy-middleware/issues/40
   onProxyReq: (proxyReq, req) => {
     if (req.body) {

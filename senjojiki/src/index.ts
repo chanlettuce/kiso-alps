@@ -2,9 +2,8 @@ import * as Sentry from '@sentry/node';
 import * as Tracing from '@sentry/tracing';
 import { json, urlencoded } from 'body-parser';
 import express from 'express';
+import { PORT } from './Config';
 import { proxyMiddleware } from './middlewares/Proxy';
-
-const PORT = process.env.GATEWAY_PORT || 3000;
 
 const app = express();
 
@@ -28,8 +27,6 @@ app.use(Sentry.Handlers.tracingHandler());
 app.use('*', urlencoded({ extended: true }));
 app.use('*', json());
 
-app.use('/api/twitter', proxyMiddleware);
-
 app.get('/', (_req, res) => {
   res.send('Hello World!');
 });
@@ -37,6 +34,8 @@ app.get('/', (_req, res) => {
 app.get('/debug-sentry', (_req, _res) => {
   throw new Error('My first Sentry error!');
 });
+
+app.use('*', proxyMiddleware);
 
 // The error handler must be before any other error middleware and after all controllers
 app.use(Sentry.Handlers.errorHandler());
