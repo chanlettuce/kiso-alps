@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "eslint.enable": true,
+  // "eslint.workingDirectories": ["./server", "./client", "./models"],
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
