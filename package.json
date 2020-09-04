@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "kiso-alps",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/chanlettuce/kiso-alps.git",
+  "author": "chanlettuce <37320700+chanlettuce@users.noreply.github.com>",
+  "license": "MIT",
+  "workspaces": [
+    "hoken-dake",
+    "senjojiki",
+    "komagatake"
+  ]
+}
