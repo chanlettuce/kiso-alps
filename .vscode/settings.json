@@ -1,13 +1,16 @@
 {
   "editor.formatOnSave": true,
   "eslint.enable": true,
-  // "eslint.workingDirectories": ["./server", "./client", "./models"],
+  "eslint.workingDirectories": ["./senjojiki"],
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "javascript.format.enable": false,
   "typescript.format.enable": false,
+  "eslint.nodePath": "./node_modules/eslint",
+  "eslint.packageManager": "yarn",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "eslint.alwaysShowStatus": true
 }

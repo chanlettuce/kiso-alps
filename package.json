@@ -10,5 +10,8 @@
     "hoken-dake",
     "senjojiki",
     "komagatake"
-  ]
+  ],
+  "scripts": {
+    "cp:env": "cp -f .env senjojiki/.env"
+  }
 }
