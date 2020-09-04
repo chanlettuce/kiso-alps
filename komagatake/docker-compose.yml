@@ -1,0 +1,30 @@
+version: '3'
+services:
+  komagatake:
+    image: node:lts-slim
+    container_name: komagatake
+
+    working_dir: /workspace/komagatake
+
+    environment:
+      HOGE: HOGE
+
+    networks:
+      - kiso-alps
+      - kiso-alps_devcontainer_default
+
+    ports:
+      - '3000:3000'
+
+    volumes:
+      - '${WORKSPACE_PATH}:/workspace:ro'
+      - '${WORKSPACE_PATH}/komagatake/.next:/workspace/komagatake/.next'
+
+    command: bash -c "yarn && yarn dev"
+
+# docker network create kiso-alps
+networks:
+  kiso-alps:
+    external: true
+  kiso-alps_devcontainer_default:
+    external: true
