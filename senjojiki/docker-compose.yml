@@ -1,0 +1,33 @@
+version: '3'
+services:
+  senjojiki:
+    image: node:lts-slim
+    container_name: senjojiki
+
+    working_dir: /workspace/senjojiki
+
+    environment:
+      # 冗長だがコンソールにポート番号を出したいので
+      GATEWAY_PORT: ${GATEWAY_PORT}
+      SENTRY_DSN: ${SENTRY_DSN}
+      FRONTEND_HOST: komagatake
+      FRONTEND_PORT: 3000
+
+    networks:
+      - kiso-alps
+      - kiso-alps_devcontainer_default
+
+    ports:
+      - '${GATEWAY_PORT}:${GATEWAY_PORT}'
+
+    volumes:
+      - '${WORKSPACE_PATH}:/workspace:ro'
+
+    command: bash -c "yarn && yarn dev:watch"
+
+# docker network create kiso-alps
+networks:
+  kiso-alps:
+    external: true
+  kiso-alps_devcontainer_default:
+    external: true
